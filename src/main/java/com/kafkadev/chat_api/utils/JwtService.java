@@ -3,6 +3,8 @@ package com.kafkadev.chat_api.utils;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
@@ -13,8 +15,9 @@ import java.util.Map;
 import java.util.function.Function;
 
 @Service
-public class JwtServices {
-    private static final String SECRET_KEY = "your-secret-key-which-should-be-long-enough-to-be-secure";
+public class JwtService {
+    @Autowired
+    private EnvConfig envConfig;
 
     public String extractUsername(String token) {
         return extractClaim(token, Claims::getSubject);
@@ -66,7 +69,7 @@ public class JwtServices {
     }
 
     private Key getSignInKey() {
-        byte[] keyBytes = Decoders.BASE64.decode(SECRET_KEY);
+        byte[] keyBytes = Decoders.BASE64.decode(envConfig.getSecretKey());
         return Keys.hmacShaKeyFor(keyBytes);
     }
 }
