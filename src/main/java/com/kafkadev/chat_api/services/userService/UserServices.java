@@ -19,8 +19,6 @@ public class UserServices implements UserServiceInteface{
     @Override
     public UserEntity registerUser(UserEntity user) {
         user.setCreatedAt(LocalDateTime.now());
-        user.setRole(Role.USER);
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
         return userRepository.save(user);
     }
 }
