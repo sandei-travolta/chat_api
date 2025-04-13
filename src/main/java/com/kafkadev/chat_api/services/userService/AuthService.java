@@ -19,9 +19,11 @@ public class AuthService {
 
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
+    private final PasswordEncoder passwordEncoder;
 
 
     public AuthResponse authenticate(LoginRequest request) {
+        System.out.println(request);
         try {
             // Authenticate user credentials
             authenticationManager.authenticate(
@@ -39,6 +41,7 @@ public class AuthService {
 
             return AuthResponse.builder()
                     .token(jwtToken)
+                    .username(user.getUsername())
                     .build();
 
         } catch (AuthenticationException e) {

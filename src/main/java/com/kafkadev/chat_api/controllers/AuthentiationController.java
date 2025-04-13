@@ -7,10 +7,7 @@ import com.kafkadev.chat_api.services.userService.AuthService;
 import com.kafkadev.chat_api.services.userService.UserServices;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/auth")
@@ -25,6 +22,11 @@ public class AuthentiationController {
     }
     @PostMapping("/login")
     public ResponseEntity<AuthResponse> loginUser(@RequestBody LoginRequest request){
+        System.out.println(request);
         return ResponseEntity.ok(authService.authenticate(request));
+    }
+    @GetMapping("/test")
+    public String test(){
+        return "Hello World";
     }
 }
