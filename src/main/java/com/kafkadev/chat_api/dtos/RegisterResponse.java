@@ -12,5 +12,5 @@ import java.time.LocalDateTime;
 @Setter
 public class RegisterResponse {
     private LocalDateTime timeStamp;
-    private int statusCode;
+    private String message;
 }

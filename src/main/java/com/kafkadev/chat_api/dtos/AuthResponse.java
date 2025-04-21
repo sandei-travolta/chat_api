@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class AuthResponse {
-    private String username;
+    private String email;
     private String token;
 
     public static AuthResponse of(String token, String username) {

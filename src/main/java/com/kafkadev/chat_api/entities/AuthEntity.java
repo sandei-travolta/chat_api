@@ -3,6 +3,7 @@ package com.kafkadev.chat_api.entities;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -15,6 +16,7 @@ import java.util.List;
 @Entity
 @Table(name = "Auth")
 @AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
 public class AuthEntity implements UserDetails {

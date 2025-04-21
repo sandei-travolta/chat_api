@@ -34,11 +34,11 @@ public class AuthService {
             // Get user details and generate token
             var user =authRepository.findByEmail(request.getEmail())
                     .orElseThrow(()->new RuntimeException("User not found"));
-            var jwtToken = jwtService.generateToken((UserDetails) user);
+            var jwtToken = jwtService.generateToken(user);
 
             return AuthResponse.builder()
                     .token(jwtToken)
-                    .username(user.getUserName())
+                    .email(user.getUsername())
                     .build();
 
         } catch (AuthenticationException e) {

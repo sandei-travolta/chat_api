@@ -1,6 +1,10 @@
 # A chat APP API implementation
 API implementation of a chat based app with realtime websocket implementation.
 
+## Objectives
+* JWT Authentication
+* Web Sockets
+
 ## Dependencies
 * mysql-connector-j
 * lombok
